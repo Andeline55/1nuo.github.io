@@ -1,3 +1,3 @@
-# nuo.github.io
+# hello everyone
 Config files for my GitHub profile.
-print'hello everyone'
+
