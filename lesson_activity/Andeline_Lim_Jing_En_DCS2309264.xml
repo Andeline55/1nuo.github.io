@@ -1,0 +1,47 @@
+<studentList>
+    <student id="1">
+        <name>John</name>
+        <age>18</age>
+        <hp>60+112358975</hp>
+        <scores>
+            <English>70</English>
+            <Mathematics>80</Mathematics>
+        </scores>
+    </student>
+    <student id="2">
+        <name>Samuel</name>
+        <age>20</age>
+        <hp>60+124536678</hp>
+        <scores>
+            <English>49</English>
+            <Mathematics>64</Mathematics>
+        </scores>
+    </student>
+    <student id="3">
+        <name>Amanda</name>
+        <age>19</age>
+        <hp>60+145597997</hp>
+        <scores>
+            <English>90</English>
+            <Mathematics>60</Mathematics>
+        </scores>
+    </student>
+    <student id="4">
+        <name>Eve</name>
+        <age>21</age>
+        <hp>60+165589815</hp>
+        <scores>
+            <English>76</English>
+            <Mathematics>65</Mathematics>
+        </scores>
+    </student>
+    <student id="5">
+        <name>Samanda</name>
+        <age>18</age>
+        <hp>60+126587934</hp>
+        <scores>
+            <English>46</English>
+            <Mathematics>68</Mathematics>
+        </scores>
+    </student>
+</studentList>
