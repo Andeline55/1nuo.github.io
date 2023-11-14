@@ -1,0 +1,86 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help center</title>
+    <link rel="icon" href="nn.png" type="image/png">
+    <style>
+        h1 {
+            background-color: rgb(248, 242, 175);
+            height: 70px;
+            font-family: Tahoma;
+            color: rgb(177, 137, 238);
+        }
+
+        table, td {
+            border: 0;
+            padding: 8px;
+        }
+
+        #otherInput {
+            display: none; 
+        }
+
+        h2{
+            background-color:rgb(160, 222, 253);
+            height:80px;
+        }
+
+        body{
+            background-color:pink;
+        }
+    </style>
+
+    <script>
+        function showOtherOption() {
+            var select = document.getElementById("problemSelect");
+            var otherInput = document.getElementById("otherInput");
+
+            if (select.value === "other") {
+                otherInput.style.display = "block";
+            } else {
+                otherInput.style.display = "none";
+            }
+        }
+
+        function redirectToEmailPage() {
+                window.location.href = "https://email.com";
+            }
+    </script>
+</head>
+<body topmargin="50px">
+    <center>
+        <h1>Hi, is any problem how we can help?</h1>
+        <br>
+        <table>
+            <h3>Asking</h3>
+            <tr>
+                <td>Problem:</td>
+                <td>
+                    <select id="problemSelect" onchange="showOtherOption()">
+                        <option value="0">- List of Problems -</option>
+                        <option value="[Order Tracking] How do I check the status of my order">[Order Tracking] How do I check the status of my order</option>
+                        <option value="[Scam Advisory] How do I report scam or suspicious activity">[Scam Advisory] How do I report scam or suspicious activity</option>
+                        <option value="[Return Refund] When will I receive my refund?">[Return Refund] When will I receive my refund?</option>
+                        <option value="[Return and Exchange] How to I return the product or exchange?">[Return and Exchange] How to I return the product or exchange?</option>
+                        <option value="other">Other question</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="otherInput">
+                <td>Additional Details:</td>
+                <td><textarea rows="4" cols="50" placeholder="Enter your question"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="button" value="Send"></td>
+            </tr>
+        </table>
+        <h2>Do you have other any question?</h2>
+        <button onclick="redirectToEmailPage()">Email</button>
+        <button>whatsapp</button>
+    </center>
+</body>
+</html>
+
+
