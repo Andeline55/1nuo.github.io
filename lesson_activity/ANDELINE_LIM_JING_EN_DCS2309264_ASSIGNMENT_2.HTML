@@ -1,0 +1,235 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuoshop</title>
+    <link rel="icon" href="nn.png" type="image/png">
+    <style>
+        body {
+            background-color: rgb(250, 206, 213);
+        }
+
+        img {
+            width: 200px;
+            height:200px;
+        }
+
+        h1 {
+            font-family: Tahoma;
+            color: rgb(115, 74, 153);
+        }
+
+        .cart-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-family:'Times New Roman', Times, serif;
+            color:rgb(91, 28, 28);
+        }
+    </style>
+</head>
+<body topmargin="50px" leftmargin="80px">
+    <a href="https://andeline55.github.io/lesson_activity/login.html" target="_blank">Log In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://andeline55.github.io/lesson_activity/help.html" target="_blank">help</a>
+    <a href="cart.html"><img class="cart-icon" src="cart.png" alt="cart-icon" align="right"></a>
+    <br>
+    <hr size="1" color="silver" width="100%">
+    <br>
+    <h1>Nuoshop</h1> 
+
+    <img id="productImage1" src="phonecover2.jpeg" alt="productImage">
+
+    <div>
+        <h2 id="productName">Cinnamon dog phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM5.00</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Iphone 11</option>
+            <option value="model2">Iphone 12</option>
+            <option value="model3">Iphone 13</option>
+            <option value="model4">Iphone 14</option>
+            <option value="model5">Iphone 15</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 1 - RM5.00</p>
+        <button onclick="addToCart('Product 1', 5.00)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage2" src="phonecover1.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">Cinnamon dog phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM4.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Iphone 11</option>
+            <option value="model2">Iphone 12</option>
+            <option value="model3">Iphone 13</option>
+            <option value="model4">Iphone 14</option>
+            <option value="model5">Iphone 15</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 2 - RM4.50</p>
+        <button onclick="addToCart('Product 2', 4.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage3" src="phonecover3.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">Mouse phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM3.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Iphone 11</option>
+            <option value="model2">Iphone 12</option>
+            <option value="model3">Iphone 13</option>
+            <option value="model4">Iphone 14</option>
+            <option value="model5">Iphone 15</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 3 - RM3.50</p>
+        <button onclick="addToCart('Product 3', 3.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage4" src="phonecover4.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">butterfly phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM6.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Iphone 11</option>
+            <option value="model2">Iphone 12</option>
+            <option value="model3">Iphone 13</option>
+            <option value="model4">Iphone 14</option>
+            <option value="model5">Iphone 15</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 4 - RM6.50</p>
+        <button onclick="addToCart('Product 4', 6.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <a href="cart.html" onclick="goToCart()">View Cart</a>
+
+    <script>
+        const productData = {
+            1: {
+                name: "Cinnamon dog phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 5.00,
+                image: "phonecover2.jpeg"
+            },
+            2:  {
+                name: "Cinnamon dog phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 4.50,
+                image: "phonecover1.jpeg"
+            },
+            3: {
+                name: "Mouse phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 3.50,
+                image: "phonecover3.jpeg"
+            },
+            4: {
+                name: "butterfly phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 6.50,
+                image: "phonecover4.jpeg"
+            },
+        };
+
+        function updateProductInfo(productId) {
+            const selectedModel = document.getElementById(`model${productId}`).value;
+            const productNameElement = document.getElementById(`productName${productId}`);
+            const productDescriptionElement = document.getElementById(`productDescription${productId}`);
+            const productPriceElement = document.getElementById(`productPrice${productId}`);
+            const productImageElement = document.getElementById(`productImage${productId}`);
+
+            const selectedProduct = productData[productId];
+            
+            productNameElement.innerText = selectedProduct.name;
+            productDescriptionElement.innerText = selectedProduct.description;
+            productPriceElement.innerText = `RM${selectedProduct.price.toFixed(2)}`;
+            productImageElement.src = selectedProduct.image;
+        }
+
+        function addToCart(productId, productName, price) {
+            const quantity = parseInt(document.getElementById(`quantity${productId}`).value);
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+            if (cart[productId]) {
+                // Product is already in the cart, update your quantity
+                cart[productId].quantity += quantity;
+            } else {
+                // Add the product to the cart
+                cart[productId] = {
+                    name: productName,
+                    price: price,
+                    quantity: quantity
+                };
+            }
+
+            function goToCart() {
+            window.location.href = "cart.html";
+            }
+
+            function addToCart(productId, productName, price) {
+            productData
+            }
+
+
+        let total = 0;
+
+        cart.forEach(item => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <span>${item.name}</span>
+            <span>$${item.price.toFixed(2)}</span>
+        `;
+        cartItemsContainer.appendChild(div);
+
+        total += item.price;
+        });
+
+    totalElement.textContent = total.toFixed(2);
+}
+
+        initModelList(1);
+        
+        </script>
+
+    </body>
+
+</html>
