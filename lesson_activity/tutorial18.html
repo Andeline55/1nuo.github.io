@@ -65,9 +65,10 @@
             var currentDate = new Date();
             var dobInput = document.getElementById('dobInput').value;
             var dobDate = new Date(dobInput);
-            var age = currentDate.getFullYear() - dobDate.getFullYear();
+            var age = currentDate.getFullYear() - dobDate.getFullYear();{
             alert('Your age is: ' + age);
             return false;
+            }
         }
     }
     </script>
