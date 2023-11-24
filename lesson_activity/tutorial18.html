@@ -34,7 +34,7 @@
 
             //to validate checkbox - must tick 
             var group = document.MyFirstForm.fav_sub;
-            for (var i=0;i<group.length;i++)
+            for (var i=0;i<group.length; i++)
             {
                 if (group[i].checked)
                 {
@@ -42,7 +42,8 @@
                 }
             }
             if (i==group.length)
-            {alert("No Checkedbox is checked");
+            {
+            alert("No Checkedbox is checked");
             return false;
             }
 
@@ -121,7 +122,9 @@
 
                     <tr>
                         <td><label for="emailInput">Email:</label></td>
-                        <td><input type="text" id="emailInput" name="emailInput"></td>
+                        <td>
+                            <input type="text" id="emailInput" name="emailInput" placeholder="user@example.gmail" required>
+                        </td>
                     </tr>
 
                     <tr>
