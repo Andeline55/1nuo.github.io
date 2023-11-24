@@ -33,7 +33,7 @@
             }
 
             //to validate checkbox - must tick 
-            vargroup = document.MyFirstForm.fav_sub;
+            var group = document.MyFirstForm.fav_sub;
             for (var i=0;i<group.length;i++)
             {
                 if (group[i].checked)
@@ -51,7 +51,6 @@
                 if (isNaN(numberInput)){
                     alert ("Please enter number!!");
                     return false;
-                }
             }
 
             //email
@@ -67,11 +66,10 @@
             var dobDate = new Date(dobInput);
             var currentDate = new Date();
             var age = currentDate.getFullYear() - dobDate.getFullYear();
-
             alert('Your age is: ' + age);
-
-            return true;
+            return false;
         }
+    }
     </script>
     <body topmargin="50">
         <center>
@@ -99,7 +97,7 @@
                     <tr>
                         <td>Choose your favourite subjects: </td>
                         <td><input type = checkbox name="fav_sub" value="DCS4103" checked>DCS4103
-                            <input type = checkbox name="fav_sub" value="DCS3003" disabled>DCS3003
+                            <input type = checkbox name="fav_sub" value="DCS3003">DCS3003
                             <input type = checkbox name="fav_sub" value="MST1003">MST1003
                             <input type = checkbox name="fav_sub" value="MST2003">MST2003
                         </td>
