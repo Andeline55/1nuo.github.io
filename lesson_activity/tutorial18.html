@@ -55,16 +55,16 @@
 
             //email
             var emailInput = document.getElementById('emailInput').value;
-            var emailRegex = /^[@ - .]/;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(emailInput)) {
                 alert('Please enter a valid email address.');
                 return false;
             }
 
             // Age
+            var currentDate = new Date();
             var dobInput = document.getElementById('dobInput').value;
             var dobDate = new Date(dobInput);
-            var currentDate = new Date();
             var age = currentDate.getFullYear() - dobDate.getFullYear();
             alert('Your age is: ' + age);
             return false;
@@ -110,7 +110,7 @@
 
                     <tr>
                         <td>Date of Birth:</td> 
-                        <td><input type="date"  name="dob" min="2000-01-01" max="2005-12-31" id="dobInput" name="dobInput"></td>
+                        <td><input type="date"  name="dob" min="2000-01-01" max="2005-12-31" id="dobInput"></td>
                     </tr>
 
                     <tr>
