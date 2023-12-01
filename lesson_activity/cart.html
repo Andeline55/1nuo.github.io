@@ -1,12 +1,5 @@
 <html>
-<body>
-        <h1>Your Shopping Cart</h1>
-    
-        <div id="cartItems"></div>
-
-        <div>Total: $<span id="total">0.00</span></div>
-    
-        <a href="index.html">Continue Shopping</a>
+<head>
     
 <script>
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -30,5 +23,14 @@ totalElement.textContent = total.toFixed(2);
 
 
 </script>
+</head>
+<body>
+    <h1>Your Shopping Cart</h1>
+
+    <div id="cartItems"></div>
+
+    <div>Total: $<span id="total">0.00</span></div>
+
+    <a href="https://andeline55.github.io/lesson_activity/ANDELINE_LIM_JING_EN_DCS2309264_ASSIGNMENT_2.HTML" target="_self">Continue Shopping</a>
 </body>
 </html>
