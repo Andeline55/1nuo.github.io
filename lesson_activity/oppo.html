@@ -1,0 +1,275 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuoshop</title>
+    <link rel="icon" href="nn.png" type="image/png">
+    <style>
+        body {
+            background-color: rgb(250, 206, 213);
+        }
+
+        img {
+            width: 200px;
+            height:200px;
+        }
+
+        h1 {
+            font-family: Tahoma;
+            color: rgb(115, 74, 153);
+        }
+
+        .cart-icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        h2 {
+            font-family:'Times New Roman', Times, serif;
+            color:rgb(91, 28, 28);
+        }
+    </style>
+</head>
+<body topmargin="50px" leftmargin="80px">
+    <a href="https://andeline55.github.io/lesson_activity/login.html" target="_blank">Log In</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://andeline55.github.io/lesson_activity/help.html" target="_blank">help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://andeline55.github.io/lesson_activity/aboutus.html" target="_blank">About us</a>
+    <a href="cart.html"><img class="cart-icon" src="cart.png" alt="cart-icon" align="right"></a>
+    <br>
+    <hr size="1" color="silver" width="100%">
+    <br>
+    <h1>Nuoshop</h1> 
+
+    <img id="productImage5" src="phonecase5.jpeg" alt="productImage">
+
+    <div>
+        <h2 id="productName">dog phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM5.00</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Oppo A57</option>
+            <option value="model2">Oppo A58</option>
+            <option value="model3">Oppo A59</option>
+            <option value="model4">Oppo A74</option>
+            <option value="model5">Oppo A78</option>
+            <option value="model6">Oppo A97</option>
+            <option value="model7">Oppo A88</option>
+
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 5 - RM5.00</p>
+        <button onclick="addToCart('Product 5', 5.00)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage6" src="phonecase6.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">Cristmas dog phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM4.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Oppo A57</option>
+            <option value="model2">Oppo A58</option>
+            <option value="model3">Oppo A59</option>
+            <option value="model4">Oppo A74</option>
+            <option value="model5">Oppo A78</option>
+            <option value="model6">Oppo A97</option>
+            <option value="model7">Oppo A88</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 6 - RM4.50</p>
+        <button onclick="addToCart('Product 6', 4.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage7" src="phonecase7.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">Dog phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM3.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Oppo A57</option>
+            <option value="model2">Oppo A58</option>
+            <option value="model3">Oppo A59</option>
+            <option value="model4">Oppo A74</option>
+            <option value="model5">Oppo A78</option>
+            <option value="model6">Oppo A97</option>
+            <option value="model7">Oppo A88</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 7 - RM3.50</p>
+        <button onclick="addToCart('Product 7', 3.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <img id="productImage4" src="phonecase8.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <h2 id="productName">Bamboo phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM6.50</p>
+    </div>
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Oppo A57</option>
+            <option value="model2">Oppo A58</option>
+            <option value="model3">Oppo A59</option>
+            <option value="model4">Oppo A74</option>
+            <option value="model5">Oppo A78</option>
+            <option value="model6">Oppo A97</option>
+            <option value="model7">Oppo A88</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 8 - RM6.50</p>
+        <button onclick="addToCart('Product 8', 6.50)">Add to Cart</button>
+    </div>
+    <br><br>
+    <div id="cartItems">
+        <h2 id="productName">Landscape painting phone case</h2>
+        <p id="productDescription">Description：Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p id="productPrice">RM6.50</p>
+    </div>
+
+    <img id="productImage9" src="phonecase9.jpeg" alt="productImage">
+
+    <div id="cartItems">
+        <label for="model">choose model：</label>
+        <select id="model" name="model" onchange="updateProductInfo()">
+            <option value="model1">Oppo A57</option>
+            <option value="model2">Oppo A58</option>
+            <option value="model3">Oppo A59</option>
+            <option value="model4">Oppo A74</option>
+            <option value="model5">Oppo A78</option>
+            <option value="model6">Oppo A97</option>
+            <option value="model7">Oppo A88</option>
+        </select>
+
+        <label for="quantity">quantity：</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+    
+        <p>Product 8 - RM6.50</p>
+        <button onclick="addToCart('Product 8', 6.50)">Add to Cart</button>
+    </div>
+    <a href="cart.html" onclick="goToCart()">View Cart</a>
+
+    <script>
+        const productData = {
+            5: {
+                name: "dog phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 5.00,
+                image: "phonecase5.jpeg"
+            },
+            6:  {
+                name: "Christmas dog phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 4.50,
+                image: "phonecase6.jpeg"
+            },
+            7: {
+                name: "Dog phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 3.50,
+                image: "phonecase7.jpeg"
+            },
+            8: {
+                name: "Bamboo phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 6.50,
+                image: "phonecase8.jpeg"
+            },
+            9: {
+                name: "Landscape painting phone case",
+                description: "Description for Cinnamon dog phone case",
+                price: 6.50,
+                image: "phonecase9.jpeg"
+            },
+        };
+
+        function updateProductInfo(productId) {
+            const selectedModel = document.getElementById(`model${productId}`).value;
+            const productNameElement = document.getElementById(`productName${productId}`);
+            const productDescriptionElement = document.getElementById(`productDescription${productId}`);
+            const productPriceElement = document.getElementById(`productPrice${productId}`);
+            const productImageElement = document.getElementById(`productImage${productId}`);
+
+            const selectedProduct = productData[productId];
+            
+            productNameElement.innerText = selectedProduct.name;
+            productDescriptionElement.innerText = selectedProduct.description;
+            productPriceElement.innerText = `RM${selectedProduct.price.toFixed(2)}`;
+            productImageElement.src = selectedProduct.image;
+        }
+
+        function addToCart(productId, productName, price) {
+            const quantity = parseInt(document.getElementById(`quantity${productId}`).value);
+
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+            if (cart[productId]) {
+                // Product is already in the cart, update your quantity
+                cart[productId].quantity += quantity;
+            } else {
+                // Add the product to the cart
+                cart[productId] = {
+                    name: productName,
+                    price: price,
+                    quantity: quantity
+                };
+            }
+
+            function goToCart() {
+            window.location.href = "cart.html";
+            }
+
+            function addToCart(productId, productName, price) {
+            productData
+            }
+
+
+        let total = 0;
+
+        cart.forEach(item => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <span>${item.name}</span>
+            <span>$${item.price.toFixed(2)}</span>
+        `;
+        cartItemsContainer.appendChild(div);
+
+        total += item.price;
+        });
+
+    totalElement.textContent = total.toFixed(2);
+}
+
+        initModelList(1);
+        
+        </script>
+    </body>
+</html>
