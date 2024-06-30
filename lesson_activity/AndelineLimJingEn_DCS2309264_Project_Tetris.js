@@ -1,0 +1,329 @@
+let grid = 32;
+let columns = 10;
+let rows = 20;
+let board = [];
+let tetromino;
+let tetrominoSequence = [];
+let colors = {
+  'I': 'cyan',
+  'O': 'yellow',
+  'T': 'purple',
+  'S': 'green',
+  'Z': 'red',
+  'J': 'blue',
+  'L': 'orange'
+};
+let tetrominos = {
+  'I': [
+    [1, 1, 1, 1]
+  ],
+  'J': [
+    [1, 0, 0],
+    [1, 1, 1]
+  ],
+  'L': [
+    [0, 0, 1],
+    [1, 1, 1]
+  ],
+  'O': [
+    [1, 1],
+    [1, 1]
+  ],
+  'S': [
+    [0, 1, 1],
+    [1, 1, 0]
+  ],
+  'T': [
+    [0, 1, 0],
+    [1, 1, 1]
+  ],
+  'Z': [
+    [1, 1, 0],
+    [0, 1, 1]
+  ]
+};
+let count = 0;
+let gameOver = false;
+let moveLeft = false;
+let moveRight = false;
+let moveDown = false;
+let score = 0;
+
+function setup() {
+  let canvas = createCanvas(1280, 720); // 设置画布尺寸为 1280 x 720
+  canvas.style('border', '1px solid white');
+  canvas.style('display', 'block');
+  canvas.style('margin', 'auto');
+  canvas.position((windowWidth - width) / 2, (windowHeight - height) / 2);
+  frameRate(6);
+  resetBoard();
+  tetromino = getNextTetromino();
+  score = 0;
+}
+
+function draw() {
+  background(255); // 将背景设置为白色
+  fill(0);
+  rect((width - columns * grid) / 2 - 100, (height - rows * grid) / 2, columns * grid + 200, rows * grid); // 绘制游戏区域背景
+
+  translate((width - columns * grid) / 2 - 100, (height - rows * grid) / 2); // 将游戏区域居中
+  drawBoard();
+  drawTetromino();
+  updateTetromino();
+
+  noStroke();
+  fill(255);
+  rect(columns * grid, 0, width - columns * grid, height);
+
+  let boxX = columns * grid + 20;
+  let scoreBoxY = 10;
+  let boxWidth = grid * 4;
+  let boxHeight = 50;
+
+  fill(0);
+  stroke(255);
+  rect(boxX, scoreBoxY, boxWidth, boxHeight);
+
+  fill(255);
+  textSize(16);
+  textAlign(CENTER, CENTER);
+  text(`Score: ${score}`, boxX + boxWidth / 2, scoreBoxY + boxHeight / 2);
+
+  drawNextTetromino(boxX, scoreBoxY + boxHeight + 20); // 在score下方显示下一个方块
+
+  if (moveLeft && isValidMove(tetromino.matrix, tetromino.row, tetromino.col - 1)) {
+    tetromino.col--;
+  }
+  if (moveRight && isValidMove(tetromino.matrix, tetromino.row, tetromino.col + 1)) {
+    tetromino.col++;
+  }
+  if (moveDown && isValidMove(tetromino.matrix, tetromino.row + 1, tetromino.col)) {
+    tetromino.row++;
+  }
+
+  // 游戏结束时显示 "GAME OVER"
+  if (gameOver) {
+    textSize(32);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', (columns * grid) / 2, (rows * grid) / 2);
+  }
+}
+
+function resetBoard() {
+  for (let row = 0; row < rows; row++) {
+    board[row] = [];
+    for (let col = 0; col < columns; col++) {
+      board[row][col] = '';
+    }
+  }
+}
+
+function drawBoard() {
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < columns; col++) {
+      if (board[row][col]) {
+        fill(colors[board[row][col]]);
+        stroke(0);
+        rect(col * grid, row * grid, grid, grid);
+      }
+    }
+  }
+}
+
+function getNextTetromino() {
+  if (tetrominoSequence.length === 0) {
+    generateSequence();
+  }
+  const name = tetrominoSequence.pop();
+  console.log('Next Tetromino:', name); // Debug log
+  const matrix = tetrominos[name];
+  const col = floor(columns / 2) - floor(matrix[0].length / 2);
+  return { name, matrix, row: 0, col };
+}
+
+function generateSequence() {
+  const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
+  while (sequence.length) {
+    const rand = getRandomInt(0, sequence.length - 1);
+    const name = sequence.splice(rand, 1)[0];
+    tetrominoSequence.push(name);
+  }
+  console.log('Tetromino Sequence:', tetrominoSequence); // Debug log
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function drawTetromino() {
+  fill(colors[tetromino.name]);
+  stroke(0);
+  for (let row = 0; row < tetromino.matrix.length; row++) {
+    for (let col = 0; col < tetromino.matrix[row].length; col++) {
+      if (tetromino.matrix[row][col]) {
+        rect((tetromino.col + col) * grid, (tetromino.row + row) * grid, grid, grid);
+      }
+    }
+  }
+}
+
+function drawNextTetromino(x, y) {
+  if (tetrominoSequence.length === 0) {
+    generateSequence(); // 确保 tetrominoSequence 不为空
+  }
+
+  const nextTetromino = tetrominoSequence[tetrominoSequence.length - 1];
+  const matrix = tetrominos[nextTetromino];
+  let boxWidth = grid * 4;
+  let boxHeight = grid * 4;
+
+  // 绘制背景框
+  fill(0);
+  stroke(255);
+  rect(x, y, boxWidth, boxHeight);
+
+  // 绘制下一个方块
+  fill(colors[nextTetromino]);
+  stroke(0);
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+      if (matrix[row][col]) {
+        rect(x + col * grid + (boxWidth - matrix[0].length * grid) / 2, y + row * grid + (boxHeight - matrix.length * grid) / 2, grid, grid);
+      }
+    }
+  }
+}
+
+function updateTetromino() {
+  count++;
+  if (count % 10 === 0) {
+    tetromino.row++;
+    if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
+      tetromino.row--;
+      placeTetromino();
+      tetromino = getNextTetromino();
+      if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
+        gameOver = true;
+        noLoop();
+      }
+    }
+    count = 0;
+  }
+}
+
+function isValidMove(matrix, row, col) {
+  for (let r = 0; r < matrix.length; r++) {
+    for (let c = 0; c < matrix[r].length; c++) {
+      if (matrix[r][c] &&
+         (col + c < 0 || col + c >= columns || row + r >= rows || board[row + r][col + c])) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function placeTetromino() {
+  for (let row = 0; row < tetromino.matrix.length; row++) {
+    for (let col = 0; col < tetromino.matrix[row].length; col++) {
+      if (tetromino.matrix[row][col]) {
+        board[tetromino.row + row][tetromino.col + col] = tetromino.name;
+      }
+    }
+  }
+  checkForLineClears();
+}
+
+function checkForLineClears() {
+  let linesCleared = 0;
+  for (let row = rows - 1; row >= 0; row--) {
+    if (board[row].every(cell => cell)) {
+      for (let r = row; r > 0; r--) {
+        for (let c = 0; c < columns; c++) {
+          board[r][c] = board[r - 1][c];
+        }
+      }
+      for (let c = 0; c < columns; c++) {
+        board[0][c] = '';
+      }
+      row++;
+      linesCleared++;
+    }
+  }
+
+  if (linesCleared > 0) {
+    score += linesCleared * 100;
+  }
+}
+
+function keyPressed() {
+  if (gameOver) return;
+  if (keyCode === LEFT_ARROW) {
+    moveLeft = true;
+  } else if (keyCode === RIGHT_ARROW) {
+    moveRight = true;
+  } else if (keyCode === DOWN_ARROW) {
+    moveDown = true;
+  } else if (keyCode === UP_ARROW) {
+    let rotated = rotateMatrix(tetromino.matrix);
+    let offset = 0;
+
+    while (!isValidMove(rotated, tetromino.row, tetromino.col + offset)) {
+      offset++;
+      if (offset > 4) {
+        rotated = tetromino.matrix;
+        break;
+      }
+    }
+
+    if (isValidMove(rotated, tetromino.row, tetromino.col + offset)) {
+      tetromino.matrix = rotated;
+      tetromino.col += offset;
+    }
+  } else if (keyCode === 32) {
+    dropTetromino();
+  }
+}
+
+function keyReleased() {
+  if (keyCode === LEFT_ARROW) {
+    moveLeft = false;
+  } else if (keyCode === RIGHT_ARROW) {
+    moveRight = false;
+  } else if (keyCode === DOWN_ARROW) {
+    moveDown = false;
+  }
+}
+
+function dropTetromino() {
+  while (isValidMove(tetromino.matrix, tetromino.row + 1, tetromino.col)) {
+    tetromino.row++;
+  }
+  placeTetromino();
+  tetromino = getNextTetromino();
+  if (!isValidMove(tetromino.matrix, tetromino.row, tetromino.col)) {
+    gameOver = true;
+    noLoop();
+    textSize(32);
+    fill(255);
+    textAlign(CENTER, CENTER);
+    text('GAME OVER', (columns * grid) / 2, (rows * grid) / 2);
+  }
+}
+
+function rotateMatrix(matrix) {
+  const result = [];
+  const rows = matrix.length;
+  const cols = matrix[0].length;
+
+  for (let row = 0; row < cols; row++) {
+    result[row] = [];
+    for (let col = 0; col < rows; col++) {
+      result[row][col] = matrix[rows - 1 - col][row];
+    }
+  }
+  return result;
+}
